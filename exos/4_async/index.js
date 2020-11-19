@@ -8,6 +8,19 @@
     - Si ce nombre est plus grand que 50, afficher "Cool !"
     - Sinon, afficher "Pas cool..."
 */
+createRandomNumber()
+    .then(function(val) {
+        console.log('Résultat1:', val);
+        if(val > 50) {
+            console.log('Cool');
+        } else {
+            console.log('Pas cool...');
+        }
+    })
+    .catch(function(err) {
+        console.log('Erreur', err);
+    });
+
 
 /* Exercice 2: Temps d'attente
     - Vous avez accès à une fonction waitForNumber() qui crée une Promesse d'attendre un certain temps.
@@ -17,6 +30,18 @@
     - Essayer de trouver quel est le temps d'attente maximal
 */
 
+function loop() {
+    waitForNumber()
+        .then(function(val) {
+            console.log('Résultat2:', val);
+        })
+        .catch(function(err) {
+            console.log('Erreur', err);
+            loop();
+        });
+}
+loop();
+
 /* Exercice 3: Charger des tweets
     - Vous avez accès à une URL qui contient des tweets.
     - Charger et logguer les tweets en utilisant fetch()
@@ -24,3 +49,10 @@
 
 const url =
   'https://raw.githubusercontent.com/iOiurson/data/master/data/tweets.json';
+
+async function wait() {
+    const http = await fetch(url);
+    const tweets = await http.json();
+    console.log(tweets);
+}
+wait();

@@ -35,6 +35,8 @@ exo2.id = 'exo2';
 exo2.style.width = '250px';
 exo2.style.height = '250px';
 exo2.style.border = '1px solid red';
+exo2.style.display = 'block';
+exo2.style.padding = '0';
 exo1.after(exo2);
 
 let div2 = document.createElement('div');
@@ -130,9 +132,10 @@ exo4.after(exo5);
 
 let div5 = document.createElement('div');
 div5.textContent = 'Drag me';
-div5.style.backgroundColor = 'lightgrey';
+div5.style.backgroundColor = 'darkgrey';
 div5.style.border = '1px solid black';
 div5.style.padding = '10px';
+div5.style.cursor = 'grab';
 exo5.append(div5);
 
 let exo5Toggle = false;
@@ -144,6 +147,7 @@ document.addEventListener('mouseup', function() {
 });
 
 function exo5move(e) {
+    e.preventDefault();
     div5.style.position = 'absolute';
     div5.style.top = (e.pageY-div5.offsetHeight/2)+'px';
     div5.style.left = (e.pageX-div5.offsetWidth/2)+'px';
